@@ -1,0 +1,28 @@
+@font-face {
+    font-family: "Cinema";
+    src: url(../images/cinema_st.ttf);
+  }
+
+body {
+    background: url(../images/movie-background.jpg);
+    background-size: cover;
+    color: rgb(249,253,255);
+}
+.container-fluid {
+    background: rgb(7,30,60);
+}
+h1 {
+    font-family: "Cinema";
+    font-size: 80px;
+}
+h4{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+button {
+    background: rgb(7,30,60) !important;
+    color: rgb(249,253,255) !important;
+    margin: 5px;
+}
+img {
+    height: 150px;
+}

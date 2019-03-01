@@ -1,5 +1,5 @@
 // My Giphy API key: aUJnpSZ6JHvWv27KlxdZ7YwyHRI33AXu
-var topics = ["Moulin Rouge", "LA Confidential", "Muriels Wedding", "That Thing You Do", "Clueless", "Harry Potter", "Return of the Jedi", "Rogue One", "Brazil", "Pitch Perfect", "Goodfellas", "Titanic", "The Little Mermaid", "Charade", "Love Actually", "Elf", "Beauty and the Beast", "Mamma Mia"];
+var topics = ["Moulin Rouge", "LA Confidential", "Muriel's Wedding", "That Thing You Do", "Clueless", "Harry Potter", "Return of the Jedi", "Rogue One", "Brazil", "Pitch Perfect", "Goodfellas", "Titanic", "The Little Mermaid", "Charade", "Love Actually", "Elf", "Beauty and the Beast", "Mamma Mia"];
 // Create a for-loop to iterate through the topics array and make buttons with each movie's name on them.
 for (var i = 0; i < topics.length; i++) {
 
@@ -7,7 +7,7 @@ for (var i = 0; i < topics.length; i++) {
 
   movieBtn.attr("data-name", topics[i]);
 
-  movieBtn.addClass("btn");
+  movieBtn.addClass("btn border border-light");
 
   movieBtn.text(topics[i]);
 
@@ -37,19 +37,35 @@ $("button").on("click", function () {
 
       // Giving the image tag an src attribute of a proprty pulled off the
       // result item
-      movieGif.attr("src", results[i].images.fixed_height.url);
-      gifDiv.addClass("col-md-4");
+      movieGif.attr("src", results[i].images.fixed_height_still.url);
+      movieGif.attr("data-still", results[i].images.fixed_height_still.url);
+      movieGif.attr("data-animate", results[i].images.fixed_height.url);
+      movieGif.attr("state", "still");
+      movieGif.addClass("gif");
+      gifDiv.addClass("float-left mr-2");
 
-      // Appending the paragraph and personImage we created to the "gifDiv" div we created
+      // Appending the paragraph to the "gifDiv" div
       gifDiv.append(p);
       gifDiv.append(movieGif);
 
       // Prepending the gifDiv to the "#gifsgohere" div in the HTML
       $("#gifsgohere").prepend(gifDiv);
-
-
-
     }
+    $(".gif").on("click", function () {
+      // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+      var state = $(this).attr("data-state");
+      // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+      // Then, set the image's data-state to animate
+      // Else set src to the data-still value
+      if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+      } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+      }
+    });
+
   });
 })
 // Create a function that makes the ajax call to giphy API

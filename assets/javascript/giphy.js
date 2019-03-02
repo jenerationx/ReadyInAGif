@@ -1,5 +1,5 @@
 // My Giphy API key: aUJnpSZ6JHvWv27KlxdZ7YwyHRI33AXu
-var topics = ["Moulin Rouge", "LA Confidential", "Muriel's Wedding", "That Thing You Do", "Clueless", "Harry Potter", "Return of the Jedi", "Rogue One", "Brazil", "Pitch Perfect", "Goodfellas", "Titanic", "The Little Mermaid", "Charade", "Love Actually", "Elf", "Beauty and the Beast", "Mamma Mia"];
+var topics = ["Moulin Rouge", "LA Confidential", "Muriel's Wedding", "That Thing You Do", "Clueless", "Harry Potter", "The Empire Strikes Back", "Rogue One", "Brazil", "Pitch Perfect", "Goodfellas", "Titanic", "The Little Mermaid", "Charade", "Love Actually", "Elf", "Beauty and the Beast", "Mamma Mia"];
 
 // Create a for-loop to iterate through the topics array and make buttons with each movie's name on them.
 function renderbuttons() {
@@ -39,9 +39,11 @@ function displayGifs() {
       var movieGif = $("<img>");
       var gifDiv = $("<div>");
       var rating = results[i].rating;
+      var title = results[i].title;
 
       // Creating a paragraph tag with the result's rating
       var p = $("<p>").text("Rating: " + rating);
+      var p2 = $("<p>").text("Title: " + title)
 
       // Give the gifs some class
       movieGif.attr("src", results[i].images.fixed_height_still.url);
@@ -49,12 +51,13 @@ function displayGifs() {
       movieGif.attr("data-animate", results[i].images.fixed_height.url);
       movieGif.attr("state", "still");
       movieGif.addClass("gif");
-      gifDiv.addClass("float-left mr-2");
+      gifDiv.addClass("float-left m-2");
 
       // Appending the paragraph to the "gifDiv" div
       gifDiv.append(movieGif);
       gifDiv.append(p);
-
+      gifDiv.append(p2);
+      
       // Prepending the gifDiv to the "#gifsgohere" div in the HTML
       $("#gifsgohere").prepend(gifDiv);
     };
@@ -81,8 +84,7 @@ $("#add-movie").on("click", function (event) {
   event.preventDefault();
   // This line grabs the input from the textbox
   var movie = $("#movie-input").val().trim();
-  // Adding movie from the textbox to our array
-  // if (movie !== "") { topics.push(movie); };
+  // Adding movie from the textbox to our array (prevent blank buttons and duplicates)
   if (($.inArray(movie, topics) === -1) && (movie !== "")) { topics.push(movie); };
   // clear text box
   $("#add-movie")[0].reset();

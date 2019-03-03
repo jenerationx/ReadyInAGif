@@ -1,5 +1,5 @@
 // My Giphy API key: aUJnpSZ6JHvWv27KlxdZ7YwyHRI33AXu
-var topics = ["Moulin Rouge", "LA Confidential", "Muriel's Wedding", "That Thing You Do", "Clueless", "Harry Potter", "The Empire Strikes Back", "Rogue One", "Brazil", "Pitch Perfect", "Goodfellas", "Titanic", "The Little Mermaid", "Charade", "Love Actually", "Elf", "Beauty and the Beast", "Mamma Mia", "Austenland"];
+var topics = ["Moulin Rouge", "LA Confidential", "Muriel's Wedding", "That Thing You Do", "Clueless", "Harry Potter", "The Empire Strikes Back", "Rogue One", "The Princess Bride", "Pitch Perfect", "Goodfellas", "Titanic", "The Little Mermaid", "Charade", "Love Actually", "Elf", "Beauty and the Beast", "Mamma Mia", "Austenland", "Amelie"];
 
 // Create a for-loop to iterate through the topics array and make buttons with each movie's name on them.
 function renderbuttons() {
